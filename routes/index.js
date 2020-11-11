@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 function isAvailable(d,h){
-  if(d===0 || day===6 || hour<9 || hour>17)
+  if(d===0 || d===6 || h<9 || h>17)
     return false
   return true
 }
@@ -12,7 +12,7 @@ const checkAvailabilityMiddeleware= function(req,res,next) {
   let day=date.getDay()
   let hour=date.getHours()
 
-  if(isAvailable)
+  if(!isAvailable(day,hour))
     {
       res.redirect('/notavailable')
       res.end()
